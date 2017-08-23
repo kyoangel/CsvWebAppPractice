@@ -1,8 +1,11 @@
-OrderDate,Region,Rep,Item,Units,UnitCost,Total
-1/6/2016,East,Jones,Pencil,95,1.99,189.05
-1/23/2016,Central,Kivell,Binder,50,19.99,999.5
-2/9/2016,Central,Jardine,Pencil,36,4.99,179.64
-2/26/2016,Central,Gill,Pen,27,19.99,539.73
-3/15/2016,West,Sorvino,Pencil,56,2.99,167.44
-4/1/2016,East,Jones,Binder,60,4.99,299.4
-4/18/2016,Central,Andrews,Pencil,75,1.99,149.25
+CustomerID,CustomerName,ContactName,Address,City,PostalCode,Country
+1,Alfreds Futterkiste,Maria Anders,Obere Str. 57,Berlin,12209,Germany
+2,Ana Trujillo Emparedados y helados,Ana Trujillo,Avda. de la Constituci?n 2222,M?xico D.F.,5021,Mexico
+3,Antonio Moreno Taquer?a,Antonio Moreno,Mataderos 2312,M?xico D.F.,5023,Mexico
+4,Around the Horn,Thomas Hardy,120 Hanover Sq.,London,WA1 1DP,UK
+5,Berglunds snabbk?p,Christina Berglund,Berguvsv?gen 8,Lule?,S-958 22,Sweden
+6,Blauer See Delikatessen,Hanna Moos,Forsterstr. 57,Mannheim,68306,Germany
+7,Blondel p?re et fils,Fr?d?rique Citeaux,"24, place Kl?ber",Strasbourg,67000,France
+8,B?lido Comidas preparadas,Mart?n Sommer,"C/ Araquil, 67",Madrid,28023,Spain
+9,Bon app',Laurence Lebihans,"12, rue des Bouchers",Marseille,13008,France
+10,Bottom-Dollar Marketse,Elizabeth Lincoln,23 Tsawassen Blvd.,Tsawassen,T2F 8M4,Canada
