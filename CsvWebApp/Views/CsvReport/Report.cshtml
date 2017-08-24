@@ -1,9 +1,46 @@
-﻿
+﻿@using CsvWebApp.Models
+@model CsvWebApp.Models.ReportViewModel
 @{
     ViewBag.Title = "Report";
 }
+@functions{
+    string[] GetHeaderNames()
+    {
+        var q1 = from tb1 in typeof(ResultEntity).GetProperties()
+                 select tb1.Name;
+        return q1.ToArray();
+    }
 
+    string GetPropertyText(ResultEntity item, string propName)
+    {
+        var prop = typeof(ResultEntity).GetProperty(propName);
+        object value = prop.GetValue(item, null);
+        if (value == null) return "";
+        return value.ToString();
+    }
+}
 <h2>Report</h2>
 
+<table border="1">
+    <tr>
+        @foreach (string header in GetHeaderNames())
+        {
+            <td>
+                @header
+            </td>
+        }
+    </tr>
 
-@*please dynamic convert List3 to HTML Table in Report View*@
+    @foreach (ResultEntity item in Model.Result)
+    {
+        <tr>
+            @foreach (string header in GetHeaderNames())
+            {
+                <td>
+                    @GetPropertyText(item, header)
+                </td>
+            }
+        </tr>
+    }
+
+</table>

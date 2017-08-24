@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CsvWebApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,20 +12,37 @@ namespace CsvWebApp.Controllers
         // GET: CsvReport
         public ActionResult Report(string csvFile1, string csvFile2)
         {
-            //Please prepare two csv files into CsvFiles Folder
+            if (csvFile1 == null)
+            {
+                csvFile1 = "sample1.csv";
+            }
 
-            //Please use Server.Map("CsvFiles/" + csvFile1); to read/get file
-            //Please use Server.Map("CsvFiles/" + csvFile2); to read/get file
+            if (csvFile2 == null)
+            {
+                csvFile2 = "sample2.csv";
+            }
 
+            csvFile1 = Server.MapPath("~/CsvFiles/" + csvFile1);
+            csvFile2 = Server.MapPath("~/CsvFiles/" + csvFile2);
 
-            //please implement convert csvFile1 to your define object List1
+            var csvReader = new CsvReader();
+            List<Customer> customerList = csvReader.ReadFile<Customer>(csvFile1);
+            List<Shipper> shipperList = csvReader.ReadFile<Shipper>(csvFile2);
 
-            //please implement convert csvFile2 to your define object List2
+            var q1 = from tb1 in customerList
+                     join tb2 in shipperList on tb1.CustomerID equals tb2.CustomerID
+                     orderby tb1.CustomerName
+                     select new ResultEntity
+                     {
+                         CustomerId = tb1.CustomerID,
+                         CustomerName = tb1.CustomerName,
+                         OrderDate = tb2.OrderDate
+                     };
 
-            //please create query to join List1 & List2 and filter to List3
+            var viewModel = new ReportViewModel();
+            viewModel.Result = q1.ToList();
 
-            //please return List3 to view, then dynamic convert List3 to HTML Table in Report.cshtml View
-            return View();
+            return View(viewModel);
         }
     }
 }
